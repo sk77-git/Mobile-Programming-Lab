@@ -53,8 +53,8 @@ public class CrudSqliteActivity extends AppCompatActivity implements NoteDeleteC
 
     private void getNotesData() {
         List<NoteModel> dataList = dbOperations.getAllData();
-        notes.clear(); // Clear the existing notes list before adding new data
-        notes.addAll(dataList); // Add the new data from the database
+        notes.clear();
+        notes.addAll(dataList);
         for (NoteModel i : notes) {
             System.out.println(i.getNote());
         }
@@ -67,7 +67,7 @@ public class CrudSqliteActivity extends AppCompatActivity implements NoteDeleteC
             notesAdapter = new NotesAdapter(this, notes, this::onNoteDeleteClicked, this::onNoteClicked);
             rcvNotes.setAdapter(notesAdapter);
         } else {
-            notesAdapter.notifyDataSetChanged(); // Notify the adapter about the data change
+            notesAdapter.notifyDataSetChanged();
         }
     }
 
@@ -103,5 +103,4 @@ public class CrudSqliteActivity extends AppCompatActivity implements NoteDeleteC
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
 }

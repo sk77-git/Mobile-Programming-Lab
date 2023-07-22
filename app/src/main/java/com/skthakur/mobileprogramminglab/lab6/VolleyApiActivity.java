@@ -1,19 +1,18 @@
 package com.skthakur.mobileprogramminglab.lab6;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.skthakur.mobileprogramminglab.R;
 
@@ -23,8 +22,8 @@ import org.json.JSONObject;
 
 
 public class VolleyApiActivity extends AppCompatActivity {
-    private static final String TAG="VolleyApiActivity";
-    private static final String JSON_PLACEHOLDER_URL="https://jsonplaceholder.typicode.com/posts";
+    private static final String TAG = "VolleyApiActivity";
+    private static final String JSON_PLACEHOLDER_URL = "https://jsonplaceholder.typicode.com/posts";
     ProgressDialog progressDialog;
     TextView tvResponseText;
 
@@ -32,8 +31,8 @@ public class VolleyApiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volley_api);
-        tvResponseText= findViewById(R.id.tv_response_text);
-        progressDialog= new ProgressDialog(this);
+        tvResponseText = findViewById(R.id.tv_response_text);
+        progressDialog = new ProgressDialog(this);
         getData();
     }
 
@@ -60,8 +59,9 @@ public class VolleyApiActivity extends AppCompatActivity {
                 });
         requestQueue.add(jsonArrayRequest);
     }
+
     private void handleResponse(JSONArray jsonArray) {
-        StringBuilder result= new StringBuilder();
+        StringBuilder result = new StringBuilder();
         try {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -76,6 +76,4 @@ public class VolleyApiActivity extends AppCompatActivity {
         tvResponseText.setText(result.toString());
         progressDialog.dismiss();
     }
-
-
 }
